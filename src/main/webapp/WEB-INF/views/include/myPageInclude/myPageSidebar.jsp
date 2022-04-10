@@ -1,13 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="./myPageHome.do" class="brand-link">
-      <img src="#" alt="Logo" class="brand-image img-circle elevation-3"
+    <a href="/" class="brand-link">
+      <img src="../resources/dist/img/logo.png" alt="Logo" class="brand-image img-circle elevation-3"
            style="opacity: 1">
-      <span class="brand-text font-weight-light">브랜드 이름</span>
+      <span class="brand-text font-weight-light">머신 킹덤</span>
     </a>
     <!-- Sidebar -->
     <div class="sidebar">
@@ -15,59 +14,32 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item">
-            <a href="myPageHome.do" class="nav-link">
+            <a href="myPageHome.do?account_Id=${sessionScope.logname }" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
-                내 정보 보기        
+                <p>
+                마이 페이지
+              </p>       
             </a>
           </li>
           <li class="nav-item">
-            <a href="orderpage.do" class="nav-link">
+            <a href="orderpage.do?account_Id=${sessionScope.logname }" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
               <p>
-                내 주문 보기
+                내 주문 내역
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="/adminPaymentList.do" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
-              <p>
-                결제 목록
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="/adminProductList.do" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
-              <p>
-                상품 목록
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="/adminBoardList.do" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
-              <p>
-                게시글 목록
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="/adminProductRegister.do" class="nav-link">
+         <c:if test="${sessionScope.admin eq 'ok'}">
+           <li class="nav-item">
+            <a href="../admin/adminHome.do" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>
-                상품 등록
+                관리자 페이지
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="/adminBoardRegister.do" class="nav-link">
-              <i class="nav-icon fas fa-edit"></i>
-              <p>
-                게시글 등록
-              </p>
-            </a>
-          </li>
+         </c:if>
+        
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

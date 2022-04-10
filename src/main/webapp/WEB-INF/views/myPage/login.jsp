@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로그인 화면</title>
+<title>로그인 | 머신킹덤</title>
 <!-- Bootstrap 3.3.6 -->
 <link rel="stylesheet" href="../resources/dist/css/adminlte.min.css">
 
@@ -42,7 +42,11 @@
 	border: #00c2cb;
 }
 
-
+a:link, a:visited,  a:hover, a:active
+{
+    color: #AAAA99;
+    text-decoration: none;
+}
 
 </style>
 
@@ -56,13 +60,13 @@
 			<h3 class="card-title">로그인</h3>
 		</div> -->
 		<div>
-			<a href='home.jsp'>
+			<a href='/'>
 			<img src='../resources/dist/img/logo.png' width='200'>
 			</a>
 		</div>
 		<!-- /.card-header -->
 		<!-- form start -->
-		<form class="form-horizontal" action="login.do" method='post'>
+		<form class="form-horizontal" action="loginCheck.do" method='post'>
 			<div class="card-body">
 				<div class="form-group row">
 					<label for="userid" class="col-md-8 col-form-label">아이디</label>
@@ -81,16 +85,27 @@
 			</div>
 			<!-- /.card-body -->
 			<div class="card-bottom">
-				<button type="submit" class="btn btn-info" id='submit'>로그인</button><br/><br/><br/>
+				<button type="submit" class="btn btn-info" id='submit'>로그인</button><br/>
+				<a href='/'><button type="button" class="btn btn-info">홈으로</button></a>
 			</div>
+			<br/>
 			<!-- /.card-footer -->
 			
 		</form>
+		<div>
+		<a href='/myPage/idFind.do'>아이디 찾기&nbsp;&nbsp;&nbsp;|</a>
+		<a href='/myPage/pwFind.do'>&nbsp;&nbsp;비밀번호 찾기</a>
+		</div><br/><br/>
 			<div>
 				<a href='signup.do'>회원가입</a>
 			</div>
 	</div>
 
-
+	<script type="text/javascript">
+	var flag = '${param.password}';
+	 if(flag=='false'){
+		 alert("아이디 또는 비밀번호가 틀립니다.")
+	 }
+	</script>
 </body>
 </html>

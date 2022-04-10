@@ -1,5 +1,4 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -12,22 +11,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script type="text/javascript">
-	
-	
 	$('#change').click(function() {
 		var check = $('#inputStatus').val()
 		console.log(check)
 	})
-
 </script>
 
 
 
 
-<title>마이페이지-취소/교환/반품 페이지</title>
+<title>주문 상태 변경 - 마이페이지 | 머신킹덤</title>
 
 
 
@@ -35,7 +32,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 </head>
 <body class="hold-transition sidebar-mini">
-<div class="wrapper">
+	<div class="wrapper">
 
 		<!-- Navbar -->
 		<%@ include file="../include/myPageInclude/myPageNavbar.jsp"%>
@@ -46,8 +43,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 		<!-- Sidebar end -->
 
 		<div class="content-wrapper">
-			
-			<input type="hidden" name="account_id" value="${board.account_id }">
+
+			<input type="hidden" name="account_Id"
+				value="${sessionScope.logname }">
 			<!-- Content Header (Page header) -->
 			<div class="content-header">
 				<div class="container-fluid">
@@ -75,41 +73,52 @@ scratch. This page gets rid of all links and provides the needed markup only.
 									<h3 class="card-title">취소/교환/반품</h3>
 								</div>
 								<!-- /.card-header -->
-								<form class="form-horizontal" action="canclepage2.do" method='get'>
-								<div class="card-body">
-									<table id="example1" class="table table-bordered table-striped">
-										<thead>
-											<tr>
-												<th>주문번호</th>
-												<th>상품명</th>
-												<th>금액</th>
-												<th>수량</th>
-												<th>취소/교환/반품</th>
-											</tr>
-										</thead>
-										<tbody>
-											
+								<!-- form action 주고 account_id 값 주기 ************************************** -->
+								<form action="canclepage2.do?account_Id="${sessionScope.logname }">
+									<!-- input 타입에 hidden 값을 불려오도록 설정 ************************************* -->
+									<input type="hidden" name="account_Id"
+										value="${sessionScope.logname }">
+									<div class="card-body">
+										<table id="example1"
+											class="table table-bordered table-striped">
+											<thead>
 												<tr>
-													<td>${board.account_id}</td>
-													<td>${board.order_payselect}</td>
-													<td>${board.order_uesrreq}</td>
-													<td>${board.coupon_number}</td>
-													<td><select id="inputStatus" name="inputStatus" >
-                  <option selected>취소/교환/반품</option>
-                  <option  value="취소" >취소</option> 
-                  <option value="교환" >교환</option> 
-                  <option  value="반품">반품</option> 
-                 </select>
-                
-                <input id="changetext"  class="form-control" placeholder="변경 사유를 입력하세요." required> 
-                <a href="cancleload.do"><input type="submit" id="change" class="btn btn-info" value="확인"></a></td>
+													<th>주문번호</th>
+													<th>상품명</th>
+													<th>금액</th>
+													<th>수량</th>
+													<th>취소/교환/반품</th>
 												</tr>
-											
+											</thead>
+
+											<!-- ******************** 취소/교환 페이지 ************************************************************-->
+											<tbody>
+
+												<tr>
+													<td>${board.orderdata_seq}</td>
+													<td>${board.product_Name}</td>
+													<td>${board.pay_price}</td>
+													<td>${board.product_amount}</td>
+
+													<!--**********************옵션 취소/교환 선택주기 ******************************************************* -->
+
+													<td><select id="inputStatus" name="state">
+															<option selected>${board.state }</option>
+															<option>취소</option>
+															<option>교환</option>
+															<option>반품</option>
+													</select> <input type="text" name="user_require" id="changetext"
+														class="form-control" placeholder="변경 사유를 입력하세요." required>
+														<input type="submit" id="change" class="btn btn-info"
+														value="확인"></td>
+
+												</tr>
 
 
-										</tbody>
-									</table>
-								</div>
+
+											</tbody>
+										</table>
+									</div>
 								</form>
 								<!-- /.card-body -->
 							</div>
@@ -132,6 +141,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 	<!-- REQUIRED SCRIPTS -->
 	<%@ include
 		file="../include/myPageInclude/myPageScript/myPageScript.jsp"%>
-	<%@ include file="../include/myPageInclude/myPageScript/myPageList.jsp" %>
+	<%@ include file="../include/myPageInclude/myPageScript/myPageList.jsp"%>
 </body>
 </html>

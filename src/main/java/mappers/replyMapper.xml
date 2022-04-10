@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="replyMapper">
+
+	<!-- 댓글 조회 -->
+	<select id="readReply" resultType="ReplyVO">
+    	SELECT
+    		  reply_rno, reply_content, reply_writer, reply_regdate
+    	 FROM reply
+    	WHERE qnaSeq = #{qnaSeq} 
+	</select>
+	
+	<!-- 댓글 작성 -->	
+	<insert id="writeReply" parameterType="ReplyVO">
+		INSERT INTO reply(
+			qnaSeq
+			, reply_rno
+			, reply_content
+			, reply_writer
+		)
+		VALUES(    #{qnaSeq}
+			, reply_rno.NEXTVAL
+			, #{reply_content}
+			, #{reply_writer}	)
+	</insert>
+	
+	<!-- 댓글 수정 -->
+	<update id="updateReply" parameterType="ReplyVO">
+		UPDATE reply SET reply_content = #{reply_content}
+		WHERE reply_rno = #{reply_rno}
+	</update>
+
+	<!-- 댓글 삭제 -->
+	<delete id="deleteReply" parameterType="ReplyVO">
+		DELETE FROM reply
+		WHERE reply_rno = #{reply_rno}
+	</delete>
+	
+	<!-- 선택된 댓글 조회 -->
+	<select id="selectReply" resultType="ReplyVO">
+		SELECT
+				qnaSeq
+			  , reply_rno
+			  , reply_content
+			  , reply_writer
+			  , reply_regdate
+		  FROM reply
+		 WHERE reply_rno = #{reply_rno}
+	</select>
+	
+
+</mapper>

@@ -4,10 +4,10 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="/admin/adminHome.do" class="brand-link">
-      <img src="#" alt="Logo" class="brand-image img-circle elevation-3"
+    <a href="/" class="brand-link">
+      <img src="../resources/dist/img/logo.png" alt="Logo" class="brand-image img-circle elevation-3"
            style="opacity: 1">
-      <span class="brand-text font-weight-light">브랜드 이름</span>
+      <span class="brand-text font-weight-light">머신킹덤</span>
     </a>
     <!-- Sidebar -->
     <div class="sidebar">
@@ -67,6 +67,14 @@
               <i class="nav-icon fas fa-edit"></i>
               <p>
                 게시글 등록
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="adminMailWrite.do" class="nav-link">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>
+                메일 보내기
               </p>
             </a>
           </li>
