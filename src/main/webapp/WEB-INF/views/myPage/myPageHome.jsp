@@ -82,8 +82,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 								<!-- /.col -->
 								<div class="col-sm-4 border-right">
 									<div class="description-block">
+
 										<h5 class="description-header">이메일 주소</h5>
 										<span class="description-text">${account.account_Email  }</span>
+
 									</div>
 									<!-- /.description-block -->
 								</div>
@@ -92,6 +94,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 									<div class="description-block">
 										<h5 class="description-header">가입날짜</h5>
 										<span class="description-text">${account.account_Date }</span>
+
 									</div>
 									<!-- /.description-block -->
 								</div>
