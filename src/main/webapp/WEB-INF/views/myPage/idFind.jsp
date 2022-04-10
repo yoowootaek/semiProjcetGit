@@ -61,7 +61,7 @@ a:link, a:visited,  a:hover, a:active
 </head>
 <body>
 
-<%-- 
+
 	<div class="card card-info">
 		<!-- <div class="card-header">
 			<img src='../resources/dist/img/logo.png' width='200' height='200'>
@@ -103,6 +103,7 @@ a:link, a:visited,  a:hover, a:active
 		<a href='/myPage/signup.do'>&nbsp;&nbsp;회원가입</a>
 		</div><br/><br/>
 			
+<<<<<<< HEAD
 	</div> --%>
 	
 	<!-- 아이디찾기 모달창 -->
@@ -163,10 +164,12 @@ a:link, a:visited,  a:hover, a:active
 				</div>
 			</div>
 		</div>
+=======
+>>>>>>> upstream/main
 	</div>
 
-
 	<script type="text/javascript">
+<<<<<<< HEAD
 	//체크 버튼에 따라 아이디/비밀번호 기능이 달라진다
 		function search_check(num) {
 		if (num == '1') {
@@ -225,6 +228,27 @@ a:link, a:visited,  a:hover, a:active
 
 
 
+=======
+	$("#userName").focusout(function(){
+			
+	     if($('#userName').val() == ""){
+	   		$('#check').text('이름을 입력해주세요.');
+	   	  	$('#check').css('color', 'red');
+	   
+	     }else{
+	    	 $('#check').hide();
+	     }
+	     });
+	     
+ 		$("#email").focusout(function(){
+	     if($('#email').val() == ""){
+	   		$('#check').text('이메일을 입력해주세요');
+	   	  	$('#check').css('color', 'red');
+	     }else{
+	    	 $('#check').hide();
+	     }
+	     });
+>>>>>>> upstream/main
 	</script>
 </body>
 </html>
